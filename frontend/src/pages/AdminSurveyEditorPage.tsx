@@ -320,6 +320,7 @@ export default function AdminSurveyEditorPage() {
       };
       const updated = await updateSurvey(survey.id as string, payload);
       setSurvey(updated);
+      setVersionRefreshKey((k) => k + 1);
       setInfo("Настройки проведения сохранены");
       setSettingsOpen(false);
     } catch (e: unknown) {
@@ -344,6 +345,7 @@ export default function AdminSurveyEditorPage() {
       }
       const res = await publishSurvey(survey.id as string);
       setSurvey(res);
+      setVersionRefreshKey((k) => k + 1);
       setInfo("Опубликовано");
     } catch (e: unknown) {
       setErr(errorMessage(e));
